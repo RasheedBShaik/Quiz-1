@@ -1,0 +1,145 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  margin: 0 auto;
+  width: 90%;
+  max-width: 1200px;
+  margin-top: 200px;
+  margin-bottom: 200px;
+  position: relative;
+}
+.details {
+  /* border: 1px solid; */
+  position: fixed;
+  top: 25px;
+  left: 22%;
+  background-color: #fff;
+  z-index: 1;
+  gap: 50px;
+  display: flex;
+  font-size: 35px;
+  align-items: center;
+  margin-bottom: 25px;
+  justify-content: space-between;
+}
+input[name="name"],
+button {
+  border: 1px solid gray;
+  padding: 5px;
+  font-size: 36px;
+  background-color: white;
+}
+button {
+  cursor: pointer;
+}
+button:active {
+  background-color: lightgreen;
+}
+.detailsButtons {
+  display: flex;
+  align-items: center;
+  gap: 100px;
+  margin-bottom: 30px;
+  margin-top: 30px;
+  margin-left: 20%;
+}
+
+#timer {
+  border: 1px solid gray;
+  padding: 5px;
+  position: sticky;
+}
+#question {
+  font-size: 40px;
+  color: black;
+}
+#options {
+  font-size: 30px;
+  color: gray;
+  margin-top: 10px;
+  margin-bottom: 35px;
+}
+label {
+  display: flex;
+  align-items: center;
+}
+input[type="radio"] {
+  transform: scale(2);
+  margin-right: 20px;
+}
+.end {
+  width: 50%;
+  display: flex;
+  justify-content: space-between;
+}
+input[type="reset"],
+input[type="submit"] {
+  background-color: black;
+  color: white;
+  font-size: 30px;
+  padding: 10px;
+  cursor: pointer;
+}
+#score {
+  padding-top: 100px;
+  font-size: 50px;
+}
+.quiz-section {
+  display: none;
+}
+#emptyName {
+  font-size: 35px;
+}
+#submission,
+#resetpopup {
+  font-size: 40px;
+}
+@media (max-width: 1270px) {
+  .container {
+    position: relative;
+  }
+  .details {
+    display: flex;
+    flex-direction: column;
+  }
+  #emptyName {
+    padding-top: 200px;
+    width: fit-content;
+    margin: 5%;
+  }
+  .detailsButtons {
+    position: relative;
+    margin-left: 20%;
+  }
+}
+@media (max-width: 600px) {
+  .container {
+    margin: 29px;
+  }
+  #timer,
+  input[name="name"] {
+    width: 80%;
+  }
+  .detailsButtons {
+    gap: 50px;
+    padding-right: 25px;
+    display: flex;
+    flex-direction: row;
+  }
+  #startQuiz,
+  #saveButton {
+    font-size: 22px;
+  }
+  #emptyName {
+    padding-top: 400px;
+    font-size: 25px;
+    margin: 10%;
+  }
+  .details {
+    flex-direction: column;
+  }
+}
