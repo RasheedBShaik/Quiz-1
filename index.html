@@ -3,419 +3,186 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>QUIZ</title>
+    <title>Simple Quiz App</title>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <div id="startingWeb"></div>
     <div class="container">
-      <div id="details" class="details">
-        <div> Enter Your Name: </div>
-        <input type="text" id="nameInput" name="name" autocomplete="off" />
-        <div id="timer">Time limit is 13 minutes </div>
-      </div>
-      <div id="emptyName"></div>
-      <div class="detailsButtons">
+      <h1>Simple Quiz App</h1>
+
+      <div class="user-section">
+        <input
+          autocomplete="off"
+          type="text"
+          id="nameInput"
+          placeholder="Enter your name" />
         <button id="saveButton" onclick="saveData()">save</button>
-        <button id="startQuiz" onclick="started()"> start Quiz </button>
+        <p id="emptyName" class="message"></p>
       </div>
 
-      <div id="quizSection" class="quiz-section">
-        <!-- question 1 -->
-        <div id="question">1. What does HTML stand for?</div>
-        <div id="options">
-          <label>
-            <input type="radio" name="q1" value="correct" /> Hyper Text Markup
-            Language
-          </label>
-          <br />
-          <label>
-            <input type="radio" name="q1" />High Tech Machine Learning
-          </label>
-          <br />
-          <label>
-            <input type="radio" name="q1" />Hyper Transfer Markup Language
-          </label>
-          <br />
-          <label>
-            <input type="radio" name="q1" /> Home Tool Management Language
-          </label>
-        </div>
-        <!-- question 2 -->
-        <div id="question">
-          2. Which of the following is NOT a programming language?
-        </div>
-        <div id="options">
-          <label> <input type="radio" name="q2" />Python </label>
-          <br />
-          <label> <input type="radio" name="q2" />Java </label>
-          <br />
-          <label> <input type="radio" name="q2" value="correct" />HTML </label>
-          <br />
-          <label> <input type="radio" name="q2" />C++ </label>
-        </div>
-        <!-- question 3 -->
-        <div id="question">
-          3. What is the output of console.log(typeof []) in JavaScript?
-        </div>
-        <div id="options">
-          <label>
-            <input type="radio" name="q3" value="correct" />object
-          </label>
-          <br />
-          <label> <input type="radio" name="q3" />array </label>
-          <br />
-          <label> <input type="radio" name="q3" />string </label>
-          <br />
-          <label> <input type="radio" name="q3" />undefined </label>
-        </div>
-        <!-- question 4 -->
-        <div id="question"> 4. What does CSS stand for? </div>
-        <div id="options">
-          <label> <input type="radio" name="q4" />Creative Style Sheets </label>
-          <br />
-          <label>
-            <input type="radio" name="q4" value="correct" />Cascading Style
-            Sheets
-          </label>
-          <br />
-          <label> <input type="radio" name="q4" />Computer Style Sheets </label>
-          <br />
-          <label> <input type="radio" name="q4" />Colorful Style Sheets </label>
-        </div>
-        <!-- question 5 -->
-        <div id="question">
-          5. What is the default value of the position property in CSS?
-        </div>
-        <div id="options">
-          <label> <input type="radio" name="q5" />absolute </label>
-          <br />
-          <label> <input type="radio" name="q5" />relative </label>
-          <br />
-          <label> <input type="radio" name="q5" />fixed </label>
-          <br />
-          <label>
-            <input type="radio" name="q5" value="correct" />static
-          </label>
-        </div>
-        <!-- question 6 -->
-        <div id="question">6. Which of these is a version control system?</div>
-        <div id="options">
-          <label><input type="radio" name="q6" /> Notepad</label><br />
-          <label><input type="radio" name="q6" value="correct" /> Git</label
-          ><br />
-          <label><input type="radio" name="q6" /> Chrome</label><br />
-          <label><input type="radio" name="q6" /> Windows</label>
-        </div>
+      <button onclick="started()">Start Quiz</button>
+      <p id="timer" class="timer">Time: 2 min 0 secs</p>
 
-        <!-- question 7 -->
-        <div id="question">7. What does SQL stand for?</div>
-        <div id="options">
-          <label
-            ><input type="radio" name="q7" value="correct" /> Structured Query
-            Language</label
-          ><br />
-          <label
-            ><input type="radio" name="q7" /> Strong Question Language</label
-          ><br />
-          <label><input type="radio" name="q7" /> Simple Query Language</label
-          ><br />
-          <label><input type="radio" name="q7" /> Styled Query Logic</label>
-        </div>
+      <form id="quizSection" style="display: none">
+        <!-- Question 1 -->
+        <p class="question">1. What does HTML stand for?</p>
+        <label
+          ><input type="radio" name="q1" value="correct" /> Hyper Text Markup
+          Language</label
+        ><br />
+        <label
+          ><input type="radio" name="q1" value="wrong" /> High Tech Machine
+          Learning</label
+        ><br />
+        <label
+          ><input type="radio" name="q1" value="wrong" /> Hyper Transfer Markup
+          Language</label
+        ><br />
+        <label
+          ><input type="radio" name="q1" value="wrong" /> Home Tool Management
+          Language</label
+        ><br />
 
-        <!-- question 8 -->
-        <div id="question">8. Which company developed Java?</div>
-        <div id="options">
-          <label><input type="radio" name="q8" /> Microsoft</label><br />
-          <label
-            ><input type="radio" name="q8" value="correct" /> Sun
-            Microsystems</label
-          ><br />
-          <label><input type="radio" name="q8" /> Apple</label><br />
-          <label><input type="radio" name="q8" /> IBM</label>
-        </div>
+        <!-- Question 2 -->
+        <p class="question"
+          >2. Which of the following is NOT a programming language?</p
+        >
+        <label><input type="radio" name="q2" value="wrong" /> Python</label
+        ><br />
+        <label><input type="radio" name="q2" value="wrong" /> Java</label><br />
+        <label><input type="radio" name="q2" value="correct" /> HTML</label
+        ><br />
+        <label><input type="radio" name="q2" value="wrong" /> C++</label><br />
 
-        <!-- question 9 -->
-        <div id="question">
-          9. Which tag is used to create a hyperlink in HTML?
-        </div>
-        <div id="options">
-          <label><input type="radio" name="q9" /> &lt;link&gt;</label><br />
-          <label><input type="radio" name="q9" /> &lt;href&gt;</label><br />
-          <label>
-            <input type="radio" name="q9" value="correct" /> &lt;a&gt;
-          </label>
-          <br />
-          <label><input type="radio" name="q9" /> &lt;hyper&gt;</label>
-        </div>
+        <!-- Question 3 -->
+        <p class="question"
+          >3. What is the output of console.log(typeof []) in JavaScript?</p
+        >
+        <label><input type="radio" name="q3" value="correct" /> object</label
+        ><br />
+        <label><input type="radio" name="q3" value="wrong" /> array</label
+        ><br />
+        <label><input type="radio" name="q3" value="wrong" /> string</label
+        ><br />
+        <label><input type="radio" name="q3" value="wrong" /> undefined</label
+        ><br />
 
-        <!-- question 10 -->
-        <div id="question">
-          10. Which HTML tag is used to define an unordered list?
-        </div>
-        <div id="options">
-          <label><input type="radio" name="q10" /> &lt;ol&gt;</label><br />
-          <label>
-            <input type="radio" name="q10" value="correct" /> &lt;ul&gt;
-          </label>
-          <br />
-          <label><input type="radio" name="q10" /> &lt;li&gt;</label><br />
-          <label><input type="radio" name="q10" /> &lt;list&gt;</label>
-        </div>
+        <!-- Question 4 -->
+        <p class="question">4. What does CSS stand for?</p>
+        <label
+          ><input type="radio" name="q4" value="wrong" /> Creative Style
+          Sheets</label
+        ><br />
+        <label
+          ><input type="radio" name="q4" value="correct" /> Cascading Style
+          Sheets</label
+        ><br />
+        <label
+          ><input type="radio" name="q4" value="wrong" /> Computer Style
+          Sheets</label
+        ><br />
+        <label
+          ><input type="radio" name="q4" value="wrong" /> Colorful Style
+          Sheets</label
+        ><br />
 
-        <!-- question 11 -->
-        <div id="question">11. What is the primary purpose of CSS?</div>
-        <div id="options">
-          <label>
-            <input type="radio" name="q11" value="correct" /> To style HTML
-            elements
-          </label>
-          <br />
-          <label>
-            <input type="radio" name="q11" /> To structure a webpage
-          </label>
-          <br />
-          <label><input type="radio" name="q11" /> To handle user input </label>
-          <br />
-          <label><input type="radio" name="q11" /> To store data</label>
-        </div>
+        <!-- Question 5 -->
+        <p class="question"
+          >5. What is the default value of the position property in CSS?</p
+        >
+        <label><input type="radio" name="q5" value="wrong" /> absolute</label
+        ><br />
+        <label><input type="radio" name="q5" value="wrong" /> relative</label
+        ><br />
+        <label><input type="radio" name="q5" value="wrong" /> fixed</label
+        ><br />
+        <label><input type="radio" name="q5" value="correct" /> static</label
+        ><br />
 
-        <!-- question 12 -->
-        <div id="question">
-          12. Which protocol is used for secure communication over the internet?
-        </div>
-        <div id="options">
-          <label><input type="radio" name="q12" value="correct" /> HTTPS</label>
-          <br />
-          <label><input type="radio" name="q12" /> HTTP</label><br />
-          <label><input type="radio" name="q12" /> FTP</label><br />
-          <label><input type="radio" name="q12" /> TCP</label>
-        </div>
+        <!-- Question 6 -->
+        <p class="question">6. Which of these is a version control system?</p>
+        <label><input type="radio" name="q6" value="wrong" /> Notepad</label
+        ><br />
+        <label><input type="radio" name="q6" value="correct" /> Git</label
+        ><br />
+        <label><input type="radio" name="q6" value="wrong" /> Chrome</label
+        ><br />
+        <label><input type="radio" name="q6" value="wrong" /> Windows</label
+        ><br />
 
-        <!-- question 13 -->
-        <div id="question">13. What does DOM stand for in web development?</div>
-        <div id="options">
-          <label>
-            <input type="radio" name="q13" value="correct" /> Document Object
-            Model
-          </label>
-          <br />
-          <label>
-            <input type="radio" name="q13" /> Data Object Management
-          </label>
-          <br />
-          <label>
-            <input type="radio" name="q13" /> Digital Online Management
-          </label>
-          <br />
-          <label>
-            <input type="radio" name="q13" /> Document Oriented Model
-          </label>
-        </div>
-        <!-- question 14 -->
-        <div id="question">
-          14. What is the default scripting language in HTML?
-        </div>
-        <div id="options">
-          <label><input type="radio" name="q14" /> Python</label><br />
-          <label><input type="radio" name="q14" /> Java</label><br />
-          <label>
-            <input type="radio" name="q14" value="correct" /> JavaScript
-          </label>
-          <br />
-          <label><input type="radio" name="q14" /> PHP</label>
-        </div>
+        <!-- Question 7 -->
+        <p class="question">7. What does SQL stand for?</p>
+        <label
+          ><input type="radio" name="q7" value="correct" /> Structured Query
+          Language</label
+        ><br />
+        <label
+          ><input type="radio" name="q7" value="wrong" /> Strong Question
+          Language</label
+        ><br />
+        <label
+          ><input type="radio" name="q7" value="wrong" /> Simple Query
+          Language</label
+        ><br />
+        <label
+          ><input type="radio" name="q7" value="wrong" /> Styled Query
+          Logic</label
+        ><br />
 
-        <!-- question 15 -->
-        <div id="question">
-          15. Which HTML element is used to display a table?
-        </div>
-        <div id="options">
-          <label><input type="radio" name="q15" /> &lt;div&gt;</label><br />
-          <label><input type="radio" name="q15" /> &lt;section&gt;</label><br />
-          <label>
-            <input type="radio" name="q15" value="correct" />
-            &lt;table&gt;
-          </label>
-          <br />
-          <label><input type="radio" name="q15" /> &lt;grid&gt;</label>
-        </div>
+        <!-- Question 8 -->
+        <p class="question">8. Which company developed Java?</p>
+        <label><input type="radio" name="q8" value="wrong" /> Microsoft</label
+        ><br />
+        <label
+          ><input type="radio" name="q8" value="correct" /> Sun
+          Microsystems</label
+        ><br />
+        <label><input type="radio" name="q8" value="wrong" /> Apple</label
+        ><br />
+        <label><input type="radio" name="q8" value="wrong" /> IBM</label><br />
 
-        <!-- question 16 -->
-        <div id="question">
-          16. Which keyword is used to declare a constant variable in
-          JavaScript?
-        </div>
-        <div id="options">
-          <label><input type="radio" name="q16" value="correct" /> const</label>
-          <br />
-          <label><input type="radio" name="q16" /> let</label><br />
-          <label><input type="radio" name="q16" /> var</label><br />
-          <label><input type="radio" name="q16" /> final</label>
-        </div>
+        <!-- Question 9 -->
+        <p class="question"
+          >9. Which tag is used to create a hyperlink in HTML?</p
+        >
+        <label
+          ><input type="radio" name="q9" value="wrong" /> &lt;link&gt;</label
+        ><br />
+        <label
+          ><input type="radio" name="q9" value="wrong" /> &lt;href&gt;</label
+        ><br />
+        <label><input type="radio" name="q9" value="correct" /> &lt;a&gt;</label
+        ><br />
+        <label
+          ><input type="radio" name="q9" value="wrong" /> &lt;hyper&gt;</label
+        ><br />
 
-        <!-- question 17 -->
-        <div id="question">
-          17. What does the "alt" attribute in an &lt;img&gt; tag specify?
-        </div>
-        <div id="options">
-          <label>
-            <input type="radio" name="q17" value="correct" /> Alternative text
-            for the image
-          </label>
-          <br />
-          <label><input type="radio" name="q17" /> Image alignment</label><br />
-          <label><input type="radio" name="q17" /> Image format</label><br />
-          <label><input type="radio" name="q17" /> Image size</label>
-        </div>
+        <!-- Question 10 -->
+        <p class="question"
+          >10. Which HTML tag is used to define an unordered list?</p
+        >
+        <label><input type="radio" name="q10" value="wrong" /> &lt;ol&gt;</label
+        ><br />
+        <label
+          ><input type="radio" name="q10" value="correct" /> &lt;ul&gt;</label
+        ><br />
+        <label><input type="radio" name="q10" value="wrong" /> &lt;li&gt;</label
+        ><br />
+        <label
+          ><input type="radio" name="q10" value="wrong" /> &lt;list&gt;</label
+        ><br />
 
-        <!-- question 18 -->
-        <div id="question">
-          18. Which of these is a front-end JavaScript framework?
-        </div>
-        <div id="options">
-          <label><input type="radio" name="q18" /> Django</label><br />
-          <label><input type="radio" name="q18" /> Flask</label><br />
-          <label><input type="radio" name="q18" value="correct" /> React</label>
-          <br />
-          <label><input type="radio" name="q18" /> Laravel</label>
-        </div>
+        <button type="button" id="submitButton" onclick="correctAnswer()"
+          >Submit</button
+        >
+        <button type="button" onclick="resetScore()">Reset</button>
+      </form>
 
-        <!-- question 19 -->
-        <div id="question">
-          19. What is the correct syntax for a JavaScript function?
-        </div>
-        <div id="options">
-          <label>
-            <input type="radio" name="q19" value="correct" /> function
-            myFunction() {}
-          </label>
-          <br />
-          <label><input type="radio" name="q19" /> def myFunction() {}</label>
-          <br />
-          <label><input type="radio" name="q19" /> func myFunction() {}</label>
-          <br />
-          <label>
-            <input type="radio" name="q19" />
-            function: myFunction() {}
-          </label>
-        </div>
-
-        <!-- question 20 -->
-        <div id="question">
-          20. What is the purpose of the "meta" tag in HTML?
-        </div>
-        <div id="options">
-          <label>
-            <input type="radio" name="q20" value="correct" /> Provides metadata
-            about the document
-          </label>
-          <br />
-          <label><input type="radio" name="q20" /> Creates a new section</label>
-          <br />
-          <label>
-            <input type="radio" name="q20" /> Links an external stylesheet
-          </label>
-          <br />
-          <label><input type="radio" name="q20" /> Displays an image</label>
-        </div>
-        <!-- question 21 -->
-        <div id="question">
-          21. Which of the following is used to style a webpage?
-        </div>
-        <div id="options">
-          <label><input type="radio" name="q21" value="correct" /> CSS</label>
-          <br />
-          <label><input type="radio" name="q21" /> HTML</label><br />
-          <label><input type="radio" name="q21" /> JavaScript</label><br />
-          <label><input type="radio" name="q21" /> SQL</label>
-        </div>
-
-        <!-- question 22 -->
-        <div id="question">22. What does HTTP stand for?</div>
-        <div id="options">
-          <label>
-            <input type="radio" name="q22" value="correct" /> Hypertext Transfer
-            Protocol
-          </label>
-          <br />
-          <label>
-            <input type="radio" name="q22" /> Hyperlink Text Process
-          </label>
-          <br />
-          <label><input type="radio" name="q22" /> Hyper Tech Protocol</label>
-          <br />
-          <label>
-            <input type="radio" name="q22" /> High Transfer Text Protocol
-          </label>
-        </div>
-
-        <!-- question 23 -->
-        <div id="question">
-          23. Which of these is NOT a valid JavaScript data type?
-        </div>
-        <div id="options">
-          <label><input type="radio" name="q23" /> String</label><br />
-          <label><input type="radio" name="q23" /> Boolean</label><br />
-          <label><input type="radio" name="q23" /> Number</label><br />
-          <label>
-            <input type="radio" name="q23" value="correct" /> Character
-          </label>
-        </div>
-
-        <!-- question 24 -->
-        <div id="question">
-          24. What does the "localStorage" object do in JavaScript?
-        </div>
-        <div id="options">
-          <label>
-            <input type="radio" name="q24" value="correct" /> Stores data in the
-            browser permanently
-          </label>
-          <br />
-          <label>
-            <input type="radio" name="q24" /> Stores session-based data
-          </label>
-          <br />
-          <label>
-            <input type="radio" name="q24" /> Stores data on a remote server
-          </label>
-          <br />
-          <label> <input type="radio" name="q24" /> Deletes all cookies</label>
-        </div>
-
-        <!-- question 25 -->
-        <div id="question">
-          25. What is the correct way to declare a JavaScript array?
-        </div>
-        <div id="options">
-          <label>
-            <input type="radio" name="q25" value="correct" />
-            let arr = [1, 2, 3];
-          </label>
-          <br />
-          <label><input type="radio" name="q25" /> let arr = {1, 2, 3};</label>
-          <br />
-          <label><input type="radio" name="q25" /> let arr = (1, 2, 3);</label>
-          <br />
-          <label><input type="radio" name="q25" /> let arr = "1, 2, 3";</label>
-        </div>
-
-        <!-- END -->
-        <div class="end">
-          <a href="">
-            <input type="reset" href="#startingWeb" onclick="resetScore();" />
-          </a>
-          <input
-            type="submit"
-            id="submitButton"
-            onclick="correctAnswer(); return false ;" />
-        </div>
-      </div>
-      <div id="score"></div>
-      <div id="submission"></div>
-      <div id="resetpopup"></div>
+      <p id="score" class="score"></p>
+      <p id="submission" class="message"></p>
+      <p id="resetpopup" class="message"></p>
     </div>
-    <script src="index.js"></script>
+
+    <script src="script.js"></script>
   </body>
 </html>
