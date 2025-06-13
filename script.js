@@ -125,3 +125,26 @@ document
       }
     }
   });
+
+// Joke API
+async function getJoke() {
+  const setupElement = document.getElementById("setup");
+  const punchlineElement = document.getElementById("punchline");
+
+  setupElement.textContent = "Loading joke...";
+  punchlineElement.textContent = "";
+
+  try {
+    const response = await fetch(
+      "https://official-joke-api.appspot.com/random_joke",
+    );
+    const data = await response.json();
+
+    setupElement.textContent = data.setup;
+    punchlineElement.textContent = data.punchline;
+  } catch (error) {
+    setupElement.textContent = "Failed to load joke.";
+    punchlineElement.textContent = "";
+    console.error(error);
+  }
+}

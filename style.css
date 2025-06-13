@@ -59,20 +59,17 @@ button {
 
 button:hover {
   background: black;
-  border: 2px solid rgb(156, 142, 142);
 }
 /* Question */
 .question {
   font-weight: 600;
   font-size: 1.125rem;
-  /* margin-bottom: 0.625rem; */
   color: navy;
 }
 
 /* Labels for Options */
 label {
   display: block;
-  /* margin: 0.5rem 0; */
   font-size: 1rem;
   cursor: pointer;
 }
@@ -98,4 +95,12 @@ label {
   font-weight: bold;
   font-size: 1.375rem;
   margin-top: 1.25rem;
+}
+/* Joke API */
+.container {
+  background: #fff;
+  padding: 20px 40px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
 }
